@@ -264,10 +264,11 @@ curl -sk $BASE/api/tasks/ -H "Authorization: Bearer $TOKEN"
 
 ## 13. ปัญหาที่พบและแนวทางแก้ไข
 
-- ปัญหา `npm ci` ล้มเหลวเพราะไม่มี package-lock.json
-  แก้โดยรัน `npm install` ใน auth-service, task-service, log-service ก่อน build
-- ปัญหา browser แจ้งเตือน self-signed certificate
-  แก้โดยกด Advanced → Proceed to localhost
+- พบปัญหาในขั้นตอน `npm ci` ไม่สามารถทำงานได้ เนื่องจากในโปรเจกต์ไม่มีไฟล์ `package-lock.json`
+  วิธีแก้ไขคือรันคำสั่ง `npm install` ภายในโฟลเดอร์ `auth-service`, `task-service` และ `log-service` ก่อนทำการ build ระบบ
+
+- ขณะเปิดใช้งานระบบผ่าน browser มีการแจ้งเตือนเกี่ยวกับ **self-signed certificate**
+  เนื่องจากเป็น certificate ที่สร้างขึ้นเพื่อใช้ในเครื่อง localhost จึงสามารถดำเนินการต่อได้โดยเลือก **Advanced → Proceed to localhost**
 
 ---
 
